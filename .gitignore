@@ -4,6 +4,10 @@ CMakeFiles
 cmake_install.cmake
 Makefile
 
+# output
+default.profraw
+install_manifest.txt
+bin
 
 # Prerequisites
 *.d
