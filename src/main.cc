@@ -88,6 +88,7 @@ class DocManager
         }
         void removeUser(void)
         {
+            std::cout << "======================================="<<std::endl;
         }
         void addDoc(void)
         {
