@@ -1,10 +1,5 @@
 #include "employee.h"
 #include <iostream>
-static void myPrint(std::string des)
-{
-    std::cout << des << std::endl;
-}
-
 employee::employee(int id):
     employee(id, std::string("employee"))
 {
@@ -52,11 +47,11 @@ QA::~QA()
 {
 }
 
-Resercher::Resercher(int id):
+Researcher::Researcher(int id):
     employee(id, std::string("Resercher"))
 {
 }
-Resercher::~Resercher()
+Researcher::~Researcher()
 {
 }
 

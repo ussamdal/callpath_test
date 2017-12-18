@@ -1,4 +1,5 @@
-set (CMAKE_CXX_FLAGS "-std=c++11 -g -ftest-coverage -fprofile-arcs")
+#set (CMAKE_CXX_FLAGS "-std=c++11 -g -ftest-coverage -fprofile-arcs")
+set (CMAKE_CXX_FLAGS "-std=c++11 -g ")
 
 project(callpath_test)
 

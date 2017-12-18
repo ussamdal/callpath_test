@@ -2,8 +2,10 @@
 #include <vector>
 #include "document.h"
 
-
-static void myPrint(std::string des);
+static void myPrint(std::string des)
+{
+    std::cout << des << std::endl;
+}
 
 class employee
 {
@@ -18,7 +20,7 @@ public:
     int getID(void) {return this->id_;};
 
     void addDocument(document& doc) {this->doc_list_.push_back(doc);};
-    void removeDocument(int index) 
+    void removeDocument(int index)
         {this->doc_list_.erase(doc_list_.begin()+index);};
     std::vector<document> getDocument(void) {return this->doc_list_;};
     void printEmp(void);
@@ -36,17 +38,17 @@ class QA final : public employee
 {
 public:
     QA(int id);
-    ~QA();
+    ~QA() override;
 
 private:
 
 
 };
-class Resercher final : public employee
+class Researcher final : public employee
 {
 public:
-    Resercher(int id);
-    ~Resercher();
+    Researcher(int id);
+    ~Researcher() override;
 
 private:
 
@@ -56,7 +58,7 @@ class PM final : public employee
 {
 public:
     PM(int id);
-    ~PM();
+    ~PM() override;
 
 private:
 

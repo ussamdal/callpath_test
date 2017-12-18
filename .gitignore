@@ -8,6 +8,8 @@ Makefile
 default.profraw
 install_manifest.txt
 bin
+#temp file
+*.swp
 
 # Prerequisites
 *.d

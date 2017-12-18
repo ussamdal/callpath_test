@@ -1,5 +1,6 @@
-#include <employee.h>
+#include "employee.h"
 #include <iostream>
+
 enum command
 {
     ADDUSER = 1,
@@ -33,11 +34,31 @@ void usage(void)
 class DocManager
 {
     public:
+        DocManager()
+        {
+        }
+        ~DocManager()
+        {
+            if(user.size() != 0)
+            {
+                for(auto it : user)
+                {
+                    user.erase(user.begin());
+                    delete it;
+                }
+            }
+        }
         void addUser(void)
         {
             int input = 0;
+            if(checkMaxUser())
+            {
+                myPrint(std::string("Max user!! Please remove user"));
+                return ;
+            }
+
             std::cout << "======================================="<<std::endl;
-            std::cout << 
+            std::cout <<
                 "Choose the type of job you would like to add" << std::endl;
             std::cout << "1. QA" << std::endl;
             std::cout << "2. Resercher " << std::endl;
@@ -51,15 +72,17 @@ class DocManager
             switch(input)
             {
                 case QAUSER:
+                    user.push_back(new QA(user.size()));
                     break;
                 case RESUSER:
+                    user.push_back(new Researcher(user.size()));
                     break;
                 case PMUSER:
+                    user.push_back(new PM(user.size()));
                     break;
                 case MAXUSER:
                 default:
                     break;
-
             }
 
         }
@@ -76,7 +99,19 @@ class DocManager
         {
         }
     private:
-        std::vector <employee> user;
+        bool checkMinUser(void)
+        {
+            if(user.size() <= 0)
+                return true;
+            return false;
+        }
+        bool checkMaxUser(void)
+        {
+            if(user.size() > 3)
+                return true;
+            return false;
+        }
+        std::vector <employee*> user;
 };
 
 int main(int argc, char* argv[])
