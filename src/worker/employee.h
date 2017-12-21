@@ -23,7 +23,7 @@ public:
     void removeDocument(int index)
         {this->doc_list_.erase(doc_list_.begin()+index);};
     std::vector<document> getDocument(void) {return this->doc_list_;};
-    void printEmp(void);
+    void printEmp(bool docFlag);
     void printDoc(int index);
 
 private:

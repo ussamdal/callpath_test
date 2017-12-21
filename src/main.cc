@@ -51,12 +51,6 @@ class DocManager
         void addUser(void)
         {
             int input = 0;
-            if(checkMaxUser())
-            {
-                myPrint(std::string("Max user!! Please remove user"));
-                return ;
-            }
-
             std::cout << "======================================="<<std::endl;
             std::cout <<
                 "Choose the type of job you would like to add" << std::endl;
@@ -89,28 +83,51 @@ class DocManager
         void removeUser(void)
         {
             std::cout << "======================================="<<std::endl;
+            std::cout <<
+                "Choose a index of job you would like to remove" << std::endl;
+            this->printUserList();
+            std::cout << "======================================="<<std::endl;
+            std::cout << "Input ID : ";
+            int index;
+            std::cin >> index;
+            for(auto it : user)
+            {
+                if(it->getID() == index)
+                {
+                    delete it;
+                    user.erase(user.begin() + index);
+                }
+            }
         }
         void addDoc(void)
         {
+#if 0
+            std::cout << "======================================="<<std::endl;
+            std::cout <<
+                "Choose a index of job you would like to remove" << std::endl;
+            this->printUserList();
+            std::cout << "======================================="<<std::endl;
+            std::cout << "Input : ";
+            int index;
+            if(index >= 0 && index < user.size())
+            {
+            }
+#endif
+
         }
         void removeDoc(void)
         {
         }
         void printAll(void)
         {
+            for(auto it : user)
+                it->printEmp(true);
         }
     private:
-        bool checkMinUser(void)
+        void printUserList(void)
         {
-            if(user.size() <= 0)
-                return true;
-            return false;
-        }
-        bool checkMaxUser(void)
-        {
-            if(user.size() > 3)
-                return true;
-            return false;
+            for(auto it : user)
+                it->printEmp(false);
         }
         std::vector <employee*> user;
 };
@@ -125,7 +142,15 @@ int main(int argc, char* argv[])
     {
         usage();
         std::cin >> num;
-
+        if(std::cin.fail())
+        {
+        //buffer clear when input char type
+        std::cin.clear();
+        std::cin.ignore(256, '\n');
+        num = -1;
+        //           continue;
+            continue;
+        }
         switch(num)
         {
             case ADDUSER:

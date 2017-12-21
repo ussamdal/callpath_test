@@ -1,7 +1,7 @@
 
-add_library(call_lib SHARED
+add_library(call_lib STATIC
     employee.cc
     )
 
-install(TARGETS call_lib
-    LIBRARY DESTINATION bin)
+#install(TARGETS call_lib
+#    LIBRARY DESTINATION bin)
